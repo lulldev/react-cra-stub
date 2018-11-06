@@ -1,18 +1,22 @@
 import { combineReducers } from 'redux';
 import {
-  SET_COLOR,
+  REQUEST_POSTS,
+  RECEIVE_POSTS,
 } from './actions';
-import homeList from './homeList/reducers';
 
 const initialState = {
-  bgColor: '#fff',
+  postsList: [],
 };
 
-const homePage = (reduxState = initialState, action) => {
+const postsPage = (reduxState = initialState, action) => {
   switch (action.type) {
-    case SET_COLOR:
+    case REQUEST_POSTS:
       return {
-        bgColor: action.bgColor,
+        postsList: [],
+      };
+    case RECEIVE_POSTS:
+      return {
+        postsList: action.posts,
       };
     default:
       return reduxState;
@@ -20,6 +24,5 @@ const homePage = (reduxState = initialState, action) => {
 };
 
 export default combineReducers({
-  homePage,
-  homeList,
+  postsPage,
 });

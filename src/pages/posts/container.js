@@ -1,14 +1,17 @@
 import { connect } from 'react-redux';
-import { setBackgroundColor } from './actions';
+import { bindActionCreators } from 'redux';
+import {
+  fetchPosts,
+} from './actions';
 import Posts from './component';
 
 
 const mapStateToProps = state => ({
-  // bgColor: state.home.homePage.bgColor,
+  postsList: state.posts.postsPage.postsList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  // setBackgroundColor: (color) => dispatch(setBackgroundColor(color)),
+  fetchPosts: bindActionCreators(fetchPosts, dispatch),
 });
 
 const postsPage = connect(
